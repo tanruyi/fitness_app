@@ -1,7 +1,9 @@
+// IMPORT FROM LIBRARIES
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Stack} from '@mui/material';
 
+// IMPORT IMAGES
 import Logo from '../assets/images/Logo.png';
 
 const Navbar = () => {

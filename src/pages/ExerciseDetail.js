@@ -1,3 +1,4 @@
+// IMPORT FROM LIBRARIES
 import React from 'react'
 
 const ExerciseDetail = () => {

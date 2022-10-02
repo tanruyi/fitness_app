@@ -1,18 +1,24 @@
+// IMPORT FROM LIBRARIES
 import React, {useState} from 'react';
 import {Box} from '@mui/material';
 
+// IMPORT CHILD COMPONENTS
 import HeroBanner from '../components/HeroBanner';
 import SearchExercises from '../components/SearchExercises';
 import Exercises from '../components/Exercises';
 
 const Home = () => {
-  return (
+
+    const [bodyPart, setBodyPart] = useState("all");
+    const [exercises, setExercises] = useState([]);
+
+    return (
     <Box>
         <HeroBanner />
-        <SearchExercises />
-        <Exercises />
+        <SearchExercises bodyPart={bodyPart} setBodyPart={setBodyPart} setExercises={setExercises} />
+        <Exercises bodyPart={bodyPart} setBodyPart={setBodyPart} setExercises={setExercises} />
     </Box>
-  )
+    )
 }
 
 export default Home

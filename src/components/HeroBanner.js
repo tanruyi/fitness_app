@@ -1,6 +1,8 @@
+// IMPORT FROM LIBRARIES
 import React from 'react'
 import {Box, Stack, Typography, Button} from '@mui/material';
 
+// IMPORT IMAGES
 import HeroBannerImage from '../assets/images/banner.png';
 
 const HeroBanner = () => {

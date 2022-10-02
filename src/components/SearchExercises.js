@@ -1,14 +1,20 @@
+// IMPORT FROM LIBRARIES
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 
+// IMPORT CUSTOM HOOKS 
 import { exerciseOptions, fetchData } from '../utilities/fetchData';
 
+// IMPORT CHILD COMPONENTS
 import HorizontalScrollbar from './HorizontalScrollbar';
 
-const SearchExercises = () => {
+// IMPORT DATA
+import { bodyPartsDataFromAPI } from '../data/bodyPartsDataFrom API';
+import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
+
+const SearchExercises = (props) => {
 
     const [search, setSearch] = useState("");
-    const [exercises, setExercises] = useState([]);
     const [bodyParts, setBodyParts] = useState([]);
 
     useEffect(() => {
@@ -16,14 +22,26 @@ const SearchExercises = () => {
             const bodyPartsData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/bodyPartList", exerciseOptions);
 
             setBodyParts(["all", ...bodyPartsData])
+
+            // console.log(bodyParts); // this is for retrieving API data and saving it to a file on our laptop for development purpose
         }
 
-        fetchExercisesData();
+        // TODO: uncomment below section when development is complete, and ensure that everything is running
+        // fetchExercisesData();
+
+        // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
+        setBodyParts(bodyPartsDataFromAPI);
     }, [])
 
     const handleSearch = async () => {
         if (search) {
-            const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+            // TODO: uncomment below section when development is complete, and ensure that everything is running
+            // const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+
+            // console.log(exercisesData); // this is for retrieving API data and saving it to a file on our laptop for development purpose
+
+            // TODO: comment out below section, it is a temporary code for development to replace calling function fetchData
+            const exercisesData = exercisesDataFromAPI;
 
             const searchedExercises = exercisesData.filter((exercise) => 
                 exercise.name.toLowerCase().includes(search)
@@ -33,10 +51,8 @@ const SearchExercises = () => {
             )
 
             setSearch("");
-            setExercises(searchedExercises);
-        }
-
-        
+            props.setExercises(searchedExercises);
+        }  
     }
 
   return (
@@ -86,7 +102,7 @@ const SearchExercises = () => {
                 p: "20px"
             }}
         >
-            <HorizontalScrollbar data={bodyParts} />
+            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} />
         </Box>
     </Stack>
   )
