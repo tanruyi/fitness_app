@@ -8,7 +8,9 @@ import { exerciseOptions, fetchData } from '../utilities/fetchData';
 
 // IMPORT CHILD COMPONENTS
 import ExerciseCard from './ExerciseCard';
-import BodyPart from './BodyPart';
+
+// IMPORT DATA
+import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
 const Exercises = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -29,10 +31,16 @@ const Exercises = (props) => {
             let exercisesData = [];
 
             if (props.bodyPart === "all") {
-                exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+                // TODO: uncomment below section when development is complete, and ensure that everything is running
+                // exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+
+                exercisesData = exercisesDataFromAPI;
 
             } else {
-                exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${props.bodyPart}`, exerciseOptions);
+                // TODO: uncomment below section when development is complete, and ensure that everything is running
+                // exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${props.bodyPart}`, exerciseOptions);
+
+                exercisesData = exercisesDataFromAPI.filter((exercise) => exercise.bodyPart.includes(props.bodyPart));
             }
 
             props.setExercises(exercisesData);
