@@ -102,7 +102,7 @@ const SearchExercises = (props) => {
                 p: "20px"
             }}
         >
-            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} />
+            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} bodyParts />
         </Box>
     </Stack>
   )
