@@ -8,6 +8,7 @@ import { exerciseOptions, fetchData } from '../utilities/fetchData';
 
 // IMPORT CHILD COMPONENTS
 import ExerciseCard from './ExerciseCard';
+import BodyPart from './BodyPart';
 
 const Exercises = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,6 +23,24 @@ const Exercises = (props) => {
 
         window.scrollTo({top: 1800, behavior: "smooth"});
     }
+
+    useEffect(() => {
+        const fetchExercisesData = async () => {
+            let exercisesData = [];
+
+            if (props.bodyPart === "all") {
+                exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+
+            } else {
+                exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${props.bodyPart}`, exerciseOptions);
+            }
+
+            props.setExercises(exercisesData);
+        }
+
+        fetchExercisesData();
+        
+    }, [props.bodyPart])
 
   return (
     <Box id="exercises" mt="50px" p="20px"
