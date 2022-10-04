@@ -25,13 +25,10 @@ const BodyPart = (props) => {
 
         // update body part state in Home component to body part card clicked
         props.setBodyPart(props.item);
-        window.scrollTo({
-            top: 1600, 
-            left: 100, 
-            behavior: "smooth"
-        });
+
     }
 
+    // for setting the icon to be displayed for each body part card
     let iconImage = "";
 
     switch (props.item) {
@@ -73,23 +70,29 @@ const BodyPart = (props) => {
     }
 
     return (
-        <Stack type="button" alignItems="center" justifyContent="center" className="bodyPart-card"
-            sx={{
-                // Adds border on card clicked by user
-                border: props.bodyPart === props.item ? `4px solid ${theme.palette.primary.main}` : "",
-                backgroundColor: "#FFF",
-                borderRadius: "15px",
-                width: "270px",
-                height: "270px",
-                cursor: "pointer",
-                gap: "10px",
-            }}
-            onClick={handleClick}
-        >
-            <img src={iconImage} alt={props.item} className='bodyPart-card-image' />
 
-            <Typography fontSize="24px" fontWeight="bold" color={theme.palette.secondary.main} textTransform="capitalize">{props.item}</Typography>
-        </Stack>
+        // browser will scroll to the search results section once the body part card is clicked
+        <a href="#exercises" style={{textDecoration: "none"}}>
+            <Stack type="button" alignItems="center" justifyContent="center" className="bodyPart-card"
+                sx={{
+                    // Adds border on card clicked by user
+                    border: props.bodyPart === props.item ? `4px solid ${theme.palette.primary.main}` : "",
+                    backgroundColor: "#FFF",
+                    borderRadius: "15px",
+                    width: "270px",
+                    height: "270px",
+                    cursor: "pointer",
+                    gap: "10px",
+                }}
+                onClick={handleClick}
+            >
+                <img src={iconImage} alt={props.item} className='bodyPart-card-image' />
+
+                
+                <Typography fontSize="24px" fontWeight="bold" color={theme.palette.secondary.main} textTransform="capitalize">{props.item}</Typography>
+                
+            </Stack>
+        </a>
     )
 }
 
