@@ -5,7 +5,6 @@ import {Box, Stack, Typography} from '@mui/material';
 // IMPORT CHILD COMPONENTS
 import HorizontalScrollbar from './HorizontalScrollbar';
 import Loader from './Loader';
-import { ClassNames } from '@emotion/react';
 
 const SimilarExercises = (props) => {
 

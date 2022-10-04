@@ -11,39 +11,42 @@ import ExerciseCard from './ExerciseCard';
 import RightArrowIcon from '../assets/icons/right-arrow.png';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
 
-// TODO: understand left & right arrow functions below
+// define left arrow for horizontal scrollbar
 const LeftArrow = () => {
-  const { scrollPrev } = useContext(VisibilityContext);
+    const { scrollPrev } = useContext(VisibilityContext);
 
-  return (
-    <Typography onClick={() => scrollPrev()} className="right-arrow">
-      <img src={LeftArrowIcon} alt="right-arrow" />
-    </Typography>
-  );
+    return (
+        <Typography onClick={() => scrollPrev()} className="left-arrow">
+            <img src={LeftArrowIcon} alt="left-arrow" />
+        </Typography>
+    );
 };
 
+// define right arrow for horizontal scrollbar
 const RightArrow = () => {
-  const { scrollNext } = useContext(VisibilityContext);
+    const { scrollNext } = useContext(VisibilityContext);
 
-  return (
-    <Typography onClick={() => scrollNext()} className="left-arrow">
-      <img src={RightArrowIcon} alt="right-arrow" />
-    </Typography>
-  );
+    return (
+        <Typography onClick={() => scrollNext()} className="right-arrow">
+            <img src={RightArrowIcon} alt="right-arrow" />
+        </Typography>
+    );
 };
 
 const HorizontalScrollbar = (props) => {
     
-  return (
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {props.data.map((item) => (
-            <Box key={item.id || item} itemId={item.id || item} title={item.id || item} m="0 40px">
-                {props.bodyParts ? <BodyPart item={item} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} /> : <ExerciseCard exercise={item} />}
-            </Box>
-            )
-        )}
-    </ScrollMenu>
-  )
+    return (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+            {props.data.map((item) => (
+
+                // For list of body parts in Search Exercises, set item as key, itemId & title
+                <Box key={item.id || item} itemId={item.id || item} title={item.id || item} m="0 40px">
+                    {props.bodyPart ? <BodyPart item={item} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} /> : <ExerciseCard exercise={item} />}
+                </Box>
+                )
+            )}
+        </ScrollMenu>
+    )
 }
 
 export default HorizontalScrollbar

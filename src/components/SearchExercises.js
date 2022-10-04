@@ -1,6 +1,7 @@
 // IMPORT FROM LIBRARIES
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // IMPORT CUSTOM HOOKS 
 import { exerciseOptions, fetchData } from '../utilities/fetchData';
@@ -14,16 +15,20 @@ import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
 const SearchExercises = (props) => {
 
+    const theme = useTheme();
+
+    // This is the text input by user into the text field component below for search bar
     const [search, setSearch] = useState("");
+
+    // This is the array of body parts available in the exercise API
     const [bodyParts, setBodyParts] = useState([]);
 
+    // To fetch list of body parts from exercises API only on component mount
     useEffect(() => {
         const fetchExercisesData = async () => {
             const bodyPartsData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/bodyPartList", exerciseOptions);
 
             setBodyParts(["all", ...bodyPartsData])
-
-            // console.log(bodyParts); // this is for retrieving API data and saving it to a file on our laptop for development purpose
         }
 
         // TODO: uncomment below section when development is complete, and ensure that everything is running
@@ -33,16 +38,20 @@ const SearchExercises = (props) => {
         setBodyParts(bodyPartsDataFromAPI);
     }, [])
 
-    const handleSearch = async () => {
+    const handleChange = (e) => {
+        setSearch(e.target.value.toLowerCase());
+    }
+
+    // This is the event handler for when user clicks on search button below
+    const handleSearch = () => {
         if (search) {
             // TODO: uncomment below section when development is complete, and ensure that everything is running
             // const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
 
-            // console.log(exercisesData); // this is for retrieving API data and saving it to a file on our laptop for development purpose
-
             // TODO: comment out below section, it is a temporary code for development to replace calling function fetchData
             const exercisesData = exercisesDataFromAPI;
 
+            // to filter out the exercises where name, target, equipment or body part includes the text user typed in search bar
             const searchedExercises = exercisesData.filter((exercise) => 
                 exercise.name.toLowerCase().includes(search)
                 || exercise.target.toLowerCase().includes(search)
@@ -50,40 +59,34 @@ const SearchExercises = (props) => {
                 || exercise.bodyPart.toLowerCase().includes(search)
             )
 
+            // to clear the search state and reset to empty value once search button is clicked
             setSearch("");
+
+            // to update the exercises state in Home component to filtered exercises
             props.setExercises(searchedExercises);
         }  
     }
 
   return (
     <Stack alignItems="center" justifyContent="center" mt="37px" p="20px">
-        <Typography fontWeight="700" textAlign="center" mb="50px"
-            sx={{
-                fontSize: {sx: "30px", lg: "44px"}
-            }}
-        >
-            Awesome Exercises You <br /> Should Know
-        </Typography>
 
+        {/* Search Bar */}
         <Box position="relative" mb="72px">
-            <TextField height="76px" value={search} onChange={(e)=> {setSearch(e.target.value.toLowerCase())}} placeholder="Search Exercises" type="text" 
+            <TextField height="76px" value={search} onChange={handleChange} placeholder="Search Exercises" type="text" 
                 sx={{
                     input: {
-                        fontWeight: "700",
+                        fontWeight: "bold",
                         border: "none",
-                        borderRadius: "4px"
                     },
                     width: {xs: "350px", lg: "800px"},
                     backgroundColor: "#FFF",
-                    borderRadius: "40px"
                 }}
-                    />
+            />
 
             <Button className="search-btn" onClick={handleSearch}
                 sx={{
-                    bgcolor: "#FF2625",
+                    bgcolor: theme.palette.primary.main,
                     color: "#FFF",
-                    textTransform: "none",
                     width: {sx: "80px", lg: "175px"},
                     fontSize: {xs: "14px", lg: "20px"},
                     height: "56px",
@@ -95,14 +98,25 @@ const SearchExercises = (props) => {
             </Button>
         </Box>
 
+        {/* Horizontal Scrolling Cards for Body Parts */}
         <Box
             sx={{
                 position: "relative",
                 width: "100%",
-                p: "20px"
+                p: "20px",
             }}
         >
-            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} bodyParts />
+            <Typography fontWeight="700" textAlign="center" mb="50px"
+                sx={{
+                    fontSize: {sx: "30px", lg: "44px"}
+                }}
+            >
+                Search Exercises By Body Parts
+            </Typography>
+
+            {/* <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} bodyParts /> */}
+            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} />
+
         </Box>
     </Stack>
   )
