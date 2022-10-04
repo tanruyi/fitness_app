@@ -1,5 +1,5 @@
 // IMPORT FROM LIBRARIES
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import Pagination from '@mui/material/Pagination';
 import {Box, Stack, Typography} from '@mui/material';
 
@@ -13,21 +13,28 @@ import ExerciseCard from './ExerciseCard';
 import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
 const Exercises = (props) => {
+
+    // this state refers to the current page of the search results section
     const [currentPage, setCurrentPage] = useState(1);
+
+    // to hard code the number of exercise cards displayed per page
     const exercisesPerPage = 9;
 
+    // this is the set of exercises that will be displayed on each page
     const indexOfLastExercise = currentPage * exercisesPerPage;
     const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-    const currentExercises = props.exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+    const currentExercises = props.exercises.slice(indexOfFirstExercise, indexOfLastExercise);
 
-    const paginate = (e, value) => {
-        setCurrentPage(value);
+    const paginate = (event, page) => {
+        setCurrentPage(page);
 
         window.scrollTo({top: 1800, behavior: "smooth"});
     }
 
+    // this will update the search results based on selected body part card, whenever bodyPart state is updated
     useEffect(() => {
         const fetchExercisesData = async () => {
+
             let exercisesData = [];
 
             if (props.bodyPart === "all") {
@@ -43,34 +50,41 @@ const Exercises = (props) => {
                 exercisesData = exercisesDataFromAPI.filter((exercise) => exercise.bodyPart.includes(props.bodyPart));
             }
 
+            // to update the exercises state in Home component based on exercises result filtered based on body part card clicked
             props.setExercises(exercisesData);
         }
 
+        // to call the function declared above
         fetchExercisesData();
         
     }, [props.bodyPart])
 
-  return (
-    <Box id="exercises" mt="50px" p="20px"
-        sx={{mt: {lg: "110px"}}}
-    >
-        <Typography variant="h3" mb="46px">
-            Showing Results
-        </Typography>
+    return (
+        <Box id="exercises" mt="50px" p="20px"
+            sx={{mt: {lg: "110px"}}}
+        >
+            <Typography variant="h3" mb="46px">
+                Search Results
+            </Typography>
 
-        <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{gap: {xs: "50px", lg: "110px"}}}>
-            {currentExercises.map((exercise, index) => (
-                <ExerciseCard key={index} exercise={exercise} />
-            ))}
-        </Stack>
+            <Typography variant="h5">
+                {exercisesPerPage} results per page
+            </Typography>
 
-        <Stack mt="100px" alignItems="center">
-            {props.exercises.length > exercisesPerPage && (
-                <Pagination shape="rounded" size="large" count={Math.ceil(props.exercises.length / exercisesPerPage)} page={currentPage} onChange={paginate} />
-            )}
-        </Stack>
-    </Box>
-  )
+            {/* this will render the exercise cards for the set of exercises on current page */}
+            <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{gap: {xs: "50px", lg: "110px"}}}>
+                {currentExercises.map((exercise, index) => (
+                    <ExerciseCard key={index} exercise={exercise} />
+                ))}
+            </Stack>
+
+            <Stack mt="100px" alignItems="center">
+                {props.exercises.length > exercisesPerPage && (
+                    <Pagination color="secondary" shape="circular" variant="outlined" size="large" count={Math.ceil(props.exercises.length / exercisesPerPage)} page={currentPage} showFirstButton showLastButton onChange={paginate} />
+                )}
+            </Stack>
+        </Box>
+    )
 }
 
 export default Exercises
