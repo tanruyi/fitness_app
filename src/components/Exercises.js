@@ -63,13 +63,15 @@ const Exercises = (props) => {
         <Box id="exercises" mt="50px" p="20px"
             sx={{mt: {lg: "110px"}}}
         >
-            <Typography variant="h3" mb="46px">
-                Search Results
-            </Typography>
+            <Stack>
+                <Typography variant="h3" mb="20px" >
+                    Search Results
+                </Typography>
 
-            <Typography variant="h5">
-                {exercisesPerPage} results per page
-            </Typography>
+                <Typography variant="h6" mb="20px">
+                    {exercisesPerPage} results per page
+                </Typography>
+            </Stack>
 
             {/* this will render the exercise cards for the set of exercises on current page */}
             <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{gap: {xs: "50px", lg: "110px"}}}>

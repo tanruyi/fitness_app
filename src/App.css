@@ -2,9 +2,14 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --red: #F44336;
+    --gray: #f4f0f4;
+}
+
 body {
     font-family: 'Josefin Sans';
-    background-color: #f4f0f4;
+    background-color: var(--gray);
 }
 
 * {
@@ -27,7 +32,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #FF2625;
+    color: var(--red);
     font-size: 25px;
     border-radius: 4px;
     position: absolute;
@@ -68,8 +73,9 @@ body {
     width: 400px;
     height: 445px;
     background: #fff;
-    border-top: 4px solid #FF2625;
-    border-bottom-left-radius: 20px;
+    /* border-top: 4px solid #FF2625; */
+    border-top: 3px solid var(--red);
+    border-bottom: 3px solid var(--red);
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -81,6 +87,11 @@ body {
 
 .exercise-card img {
     height: 326px;
+}
+
+.exercise-card,
+.exercise-card img {
+    border-radius: 20px;
 }
 
 .bodyPart-card {
@@ -98,8 +109,8 @@ body {
 }
 
 .search-btn:hover {
-    color: #FF2625 !important;
-    border: 1px solid #FF2625 !important;
+    color: var(--red) !important;
+    border: 1px solid var(--red) !important;
 }
 
 .exercise-video {
