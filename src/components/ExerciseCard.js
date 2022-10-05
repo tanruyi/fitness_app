@@ -8,6 +8,23 @@ import StarIcon from '@mui/icons-material/Star';
 const ExerciseCard = (props) => {
 
     const theme = useTheme();
+    const favouriteExercises = props.favouriteExercises;
+
+    const favouritedButton = (
+        <IconButton color="primary" size="large" sx={{position: "absolute", top: "10px", right: "10px"}}>
+            <StarIcon fontSize="large" />
+        </IconButton>
+    )
+
+    let favouritedButtonDisplay = "";
+
+    if (favouriteExercises) {
+        if (favouriteExercises.some((favouriteExercise) => favouriteExercise.id === props.exercise.id)) {
+            favouritedButtonDisplay = true;
+        }
+    } else {
+        favouritedButtonDisplay = false;
+    }
 
     return (
         <Link className="exercise-card" to={`/exercise/${props.exercise.id}`}>
@@ -53,9 +70,7 @@ const ExerciseCard = (props) => {
                     {props.exercise.equipment}
                 </Button>
                     
-                {/* <IconButton color="primary" size="large" sx={{position: "absolute", top: "10px", right: "10px"}}>
-                    <StarIcon fontSize="large" />
-                </IconButton> */}
+                {favouritedButtonDisplay ? favouritedButton : ""}
             </Stack>
 
             <Typography ml="21px" color="#000" fontSize="22px" fontWeight="bold" mt="14px" pb="10px" textTransform="capitalize">

@@ -62,7 +62,7 @@ const App = () => {
             <Box width="400px" sx={{width: {xl: "1488px"}}} m="auto">
                 <Navbar />
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element={<Home favouriteExercises={favouriteExercises} />} />
                     <Route path='/exercise/:id' element={<ExerciseDetail addFavouriteExercise={addFavouriteExercise} />} />
                     <Route path='/favourites' element={<Favourites favouriteExercises={favouriteExercises} />} />
                 </Routes>

@@ -28,7 +28,7 @@ const Home = (props) => {
         <SearchExercises bodyPart={bodyPart} updateBodyPart={updateBodyPart} setExercises={setExercises} />
 
         {/* This is the part to display search results */}
-        <Exercises bodyPart={bodyPart} exercises={exercises} setExercises={setExercises} />
+        <Exercises bodyPart={bodyPart} exercises={exercises} setExercises={setExercises} favouriteExercises={props.favouriteExercises} />
     </Box>
     )
 }

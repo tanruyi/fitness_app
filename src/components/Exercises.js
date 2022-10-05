@@ -76,7 +76,7 @@ const Exercises = (props) => {
             {/* this will render the exercise cards for the set of exercises on current page */}
             <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{gap: {xs: "50px", lg: "110px"}}}>
                 {currentExercises.map((exercise, index) => (
-                    <ExerciseCard key={index} exercise={exercise} />
+                    <ExerciseCard key={index} exercise={exercise} favouriteExercises={props.favouriteExercises} />
                 ))}
             </Stack>
 
