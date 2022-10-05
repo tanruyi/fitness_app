@@ -24,7 +24,7 @@ const BodyPart = (props) => {
     const handleClick = () => {
 
         // update body part state in Home component to body part card clicked
-        props.setBodyPart(props.item);
+        props.updateBodyPart(props.item);
 
     }
 

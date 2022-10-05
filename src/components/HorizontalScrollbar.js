@@ -41,7 +41,7 @@ const HorizontalScrollbar = (props) => {
 
                 // For list of body parts in Search Exercises, set item as key, itemId & title
                 <Box key={item.id || item} itemId={item.id || item} title={item.id || item} m="0 40px">
-                    {props.bodyPart ? <BodyPart item={item} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} /> : <ExerciseCard exercise={item} />}
+                    {props.bodyPart ? <BodyPart item={item} bodyPart={props.bodyPart} updateBodyPart={props.updateBodyPart} /> : <ExerciseCard exercise={item} />}
                 </Box>
                 )
             )}

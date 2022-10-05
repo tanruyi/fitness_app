@@ -114,8 +114,7 @@ const SearchExercises = (props) => {
                 Search Exercises By Body Parts
             </Typography>
 
-            {/* <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} bodyParts /> */}
-            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} setBodyPart={props.setBodyPart} />
+            <HorizontalScrollbar data={bodyParts} bodyPart={props.bodyPart} updateBodyPart={props.updateBodyPart} />
 
         </Box>
     </Stack>

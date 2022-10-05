@@ -15,13 +15,17 @@ const Home = () => {
     // Array of exercises will be updated in Exercises component, when API is called
     const [exercises, setExercises] = useState([]);
 
+    const updateBodyPart = (bodyPartClicked) => {
+        setBodyPart(bodyPartClicked);
+    }
+
     return (
     <Box>
         {/* This is the top banner */}
         <Banner />
 
         {/* This is the searchbar & body part cards */}
-        <SearchExercises bodyPart={bodyPart} setBodyPart={setBodyPart} setExercises={setExercises} />
+        <SearchExercises bodyPart={bodyPart} updateBodyPart={updateBodyPart} setExercises={setExercises} />
 
         {/* This is the part to display search results */}
         <Exercises bodyPart={bodyPart} exercises={exercises} setExercises={setExercises} />
