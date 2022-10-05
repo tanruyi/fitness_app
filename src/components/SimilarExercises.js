@@ -18,7 +18,7 @@ const SimilarExercises = (props) => {
                 Exercises that target the same muscle group
             </Typography>
 
-            <Stack direction="row" mb="100px"
+            <Stack direction="row" mb="100px" gap="110px"
                 sx={{
                     p: "2",
                     position: "relative",

@@ -1,8 +1,9 @@
 // IMPORT FROM LIBRARIES
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Stack, Typography} from '@mui/material';
+import {Button, Stack, Typography, IconButton} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import StarIcon from '@mui/icons-material/Star';
 
 const ExerciseCard = (props) => {
 
@@ -51,6 +52,10 @@ const ExerciseCard = (props) => {
                 >
                     {props.exercise.equipment}
                 </Button>
+                    
+                <IconButton color="primary" size="large" sx={{position: "absolute", top: "10px", right: "10px"}}>
+                    <StarIcon fontSize="large" />
+                </IconButton>
             </Stack>
 
             <Typography ml="21px" color="#000" fontSize="22px" fontWeight="bold" mt="14px" pb="10px" textTransform="capitalize">
