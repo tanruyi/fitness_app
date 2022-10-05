@@ -7,7 +7,7 @@ import Banner from '../components/Banner';
 import SearchExercises from '../components/SearchExercises';
 import Exercises from '../components/Exercises';
 
-const Home = () => {
+const Home = (props) => {
 
     // Body part selected by user, state is updated when user clicks on BodyPart card. 
     const [bodyPart, setBodyPart] = useState("all");

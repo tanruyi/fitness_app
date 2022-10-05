@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import {Box} from '@mui/material';
 
 // IMPORT CUSTOM HOOKS 
-import { exerciseOptions, fetchData, youtubeOptions } from '../utilities/fetchData';
+import { exerciseOptions, fetchData } from '../utilities/fetchData';
 
 // IMPORT CHILD COMPONENTS
 import Detail from '../components/Detail';
@@ -14,7 +14,7 @@ import SimilarExercises from '../components/SimilarExercises';
 // IMPORT DATA
 import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
-const ExerciseDetail = () => {
+const ExerciseDetail = (props) => {
 
     // this is the exercise data for exercise selected
     const [exerciseDetail, setExerciseDetail] = useState({});
@@ -71,7 +71,7 @@ const ExerciseDetail = () => {
 
     return (
         <Box>
-            <Detail exerciseDetail={exerciseDetail} />
+            <Detail exerciseDetail={exerciseDetail} addFavouriteExercise={props.addFavouriteExercise} />
             <ExerciseVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
             <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />
         </Box>

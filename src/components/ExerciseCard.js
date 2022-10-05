@@ -53,9 +53,9 @@ const ExerciseCard = (props) => {
                     {props.exercise.equipment}
                 </Button>
                     
-                <IconButton color="primary" size="large" sx={{position: "absolute", top: "10px", right: "10px"}}>
+                {/* <IconButton color="primary" size="large" sx={{position: "absolute", top: "10px", right: "10px"}}>
                     <StarIcon fontSize="large" />
-                </IconButton>
+                </IconButton> */}
             </Stack>
 
             <Typography ml="21px" color="#000" fontSize="22px" fontWeight="bold" mt="14px" pb="10px" textTransform="capitalize">

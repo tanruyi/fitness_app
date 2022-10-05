@@ -24,8 +24,17 @@ const Navbar = () => {
         </Link>
 
         <Stack direction="row" gap="40px" fontSize="24px" alignItems="flex-end">
-            <Link to="/" style={{textDecoration: "none", color: theme.palette.primary.contrastText, borderBottom: "3px solid", borderBottomColor: theme.palette.primary.main}}>Home</Link>
-            <a href="#exercises" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>Exercises</a>
+            <Link to="/" style={{textDecoration: "none", color: theme.palette.primary.contrastText, borderBottom: "3px solid", borderBottomColor: theme.palette.primary.main}}>
+                Home
+            </Link>
+
+            <a href="#exercises" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>
+                Exercises
+            </a>
+
+            <Link to="/favourites" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>
+                Favourites
+            </Link>
         </Stack>
     </Stack>
     )

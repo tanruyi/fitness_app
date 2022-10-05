@@ -2,6 +2,7 @@
 import React from 'react';
 import { Typography, Stack, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import StarIcon from '@mui/icons-material/Star';
 
 // IMPORT IMAGES
 import BodyPartImage from '../assets/icons/body-part.png';
@@ -12,23 +13,31 @@ const Detail = (props) => {
 
     const theme = useTheme();
 
+    // const [newFavouriteExercise, setNewFavouriteExercise] = useState({});
+
     // destructured assignment to save the key-value pairs in exerciseDetail as variables
     const { bodyPart, gifUrl, name, target, equipment } = props.exerciseDetail;
 
+    // these are the exercise details to show besides the icons
     const extraDetail = [
-    {
-        icon: BodyPartImage,
-        name: bodyPart,
-    },
-    {
-        icon: TargetImage,
-        name: target,
-    },
-    {
-        icon: EquipmentImage,
-        name: equipment,
-    },
+        {
+            icon: BodyPartImage,
+            name: bodyPart,
+        },
+        {
+            icon: TargetImage,
+            name: target,
+        },
+        {
+            icon: EquipmentImage,
+            name: equipment,
+        },
     ]
+
+    const handleClick = () => {
+        
+        props.addFavouriteExercise(props.exerciseDetail);
+    }
 
     return (
         <Stack gap="60px"
@@ -72,8 +81,11 @@ const Detail = (props) => {
                             {item.name === equipment ? `Equipment: ${item.name}` : ""}
                         </Typography>
                     </Stack>
-            ))}
+                ))}
 
+                <Button variant="contained" endIcon={<StarIcon />} onClick={handleClick}>
+                    Add to favourites
+                </Button>
             </Stack>
         </Stack>
     )

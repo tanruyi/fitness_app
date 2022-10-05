@@ -1,5 +1,5 @@
 // IMPORT FROM LIBRARIES
-import React from 'react';
+import React, {useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import {Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ExerciseDetail from './pages/ExerciseDetail';
 import Footer from './components/Footer';
+import Favourites from './pages/Favourites';
 
 const theme = createTheme({
     palette: {
@@ -37,13 +38,33 @@ const theme = createTheme({
 })
 
 const App = () => {
+
+    const [favouriteExercises, setFavouriteExercises] = useState([]);
+
+    const addFavouriteExercise = (newFavouriteExercise) => {
+
+        console.log("star clicked");
+        
+        setFavouriteExercises((prevState) => {
+            
+            // Check if the exercise is already in the favouriteExercises, and add only if it is not in the list 
+            if (prevState.some((exercise) => exercise.id === newFavouriteExercise.id)) {
+                return [...prevState];
+            } else {
+                return [...prevState, newFavouriteExercise];
+            }            
+            
+        });
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Box width="400px" sx={{width: {xl: "1488px"}}} m="auto">
                 <Navbar />
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/exercise/:id' element={<ExerciseDetail />} />
+                    <Route path='/exercise/:id' element={<ExerciseDetail addFavouriteExercise={addFavouriteExercise} />} />
+                    <Route path='/favourites' element={<Favourites favouriteExercises={favouriteExercises} />} />
                 </Routes>
                 <Footer />
             </Box>
