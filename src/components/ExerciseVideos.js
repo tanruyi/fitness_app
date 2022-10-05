@@ -9,7 +9,7 @@ const ExerciseVideos = (props) => {
   if (!exerciseVideos.length) return "Loading...";
 
     return (
-        <Box p="20px" marginBottom="50px"
+        <Box marginBottom="50px"
             sx={{
                 marginTop: {xs: "20px", lg: "100px"},
             }}
@@ -21,7 +21,7 @@ const ExerciseVideos = (props) => {
             <Stack justifyContent="flex-start" flexWrap="wrap" alignItems="center"
                 sx={{
                     flexDirection: {lg: "row"},
-                    gap: {xs: "0", lg: "110px"},
+                    columnGap: {xs: "0", lg: "110px"},
                 }}
             >
                 {exerciseVideos?.map((video, index) => (
