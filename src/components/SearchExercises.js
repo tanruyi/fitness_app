@@ -36,14 +36,38 @@ const SearchExercises = (props) => {
 
         // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
         setBodyParts(bodyPartsDataFromAPI);
+    
     }, [])
 
+    // to add event listener that listens to user pressing enter key to call handlesearch function
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+
+            if (e.key === "Enter" && search) {
+
+                e.preventDefault();
+
+                handleSearch();
+            }
+        }
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        // Clean up function to remove event listener when component unmounts
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        }
+
+    })
+
+    // to save the text value input by user in search bar in a state
     const handleChange = (e) => {
         setSearch(e.target.value.toLowerCase());
     }
 
     // This is the event handler for when user clicks on search button below
     const handleSearch = () => {
+
         if (search) {
             // TODO: uncomment below section when development is complete, and ensure that everything is running
             // const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
@@ -72,7 +96,7 @@ const SearchExercises = (props) => {
 
         {/* Search Bar */}
         <Box position="relative" mb="72px">
-            <TextField height="76px" value={search} onChange={handleChange} placeholder="Search Exercises" type="text" 
+            <TextField height="76px" value={search} onChange={handleChange} placeholder="Search exercises by name, target muscle, body part or equipment" type="text" 
                 sx={{
                     input: {
                         fontWeight: "bold",

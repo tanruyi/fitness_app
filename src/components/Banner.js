@@ -28,13 +28,13 @@ const Banner = () => {
                 fontSize: {xs: "14px", lg: "30px"}
             }}
         >
-            I'm WORKING 
+            <span style={{fontStyle: "italic"}}>I'm</span> WORKING 
             <br /> 
-            on MYSELF
+            <span style={{fontStyle: "italic"}}>on</span> MYSELF
             <br /> 
-            for MYSELF
+            <span style={{fontStyle: "italic"}}>for</span> MYSELF
             <br /> 
-            by MYSELF
+            <span style={{fontStyle: "italic"}}>by</span> MYSELF
         </Typography>
             
         {/* Click on this button to scroll to the list of search results */}
