@@ -1,7 +1,7 @@
 // IMPORT FROM LIBRARIES
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {Box} from '@mui/material';
+import {autocompleteClasses, Box} from '@mui/material';
 
 // IMPORT CUSTOM HOOKS 
 import { exerciseOptions, fetchData } from '../utilities/fetchData';
@@ -32,6 +32,9 @@ const ExerciseDetail = (props) => {
     const { id } = useParams();
 
     useEffect(() => {
+
+        window.scrollTo({top: 0, left: 0, behavior: "auto"});
+
         const fetchExercisesData = async () => {
 
             const exerciseDbUrl = "https://exercisedb.p.rapidapi.com";

@@ -5,7 +5,7 @@ import {Stack} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 // IMPORT IMAGES
-import Logo from '../assets/images/Logo.png';
+import Logo2 from '../assets/images/Logo2.png';
 
 const Navbar = () => {
 
@@ -20,7 +20,7 @@ const Navbar = () => {
         }
     }>
         <Link to="/">
-            <img src={Logo} alt="logo" style={{width: "48px", height: "48px", margin: "0 20px"}} />
+            <img src={Logo2} alt="logo" style={{width: "150px", margin: "0 20px", borderRadius: "10px"}} />
         </Link>
 
         <Stack direction="row" gap="40px" fontSize="24px" alignItems="flex-end">
