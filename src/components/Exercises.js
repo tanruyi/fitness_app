@@ -12,6 +12,13 @@ import ExerciseCard from './ExerciseCard';
 // IMPORT DATA
 import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
+// IMPORT IMAGES
+import quby1 from '../assets/quby/sticker_1.gif';
+import quby2 from '../assets/quby/sticker_4.gif';
+import quby3 from '../assets/quby/sticker_6.gif';
+import quby4 from '../assets/quby/sticker_7.gif';
+import quby5 from '../assets/quby/sticker_9.gif';
+
 const Exercises = (props) => {
 
     // this state refers to the current page of the search results section
@@ -25,6 +32,7 @@ const Exercises = (props) => {
     const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
     const currentExercises = props.exercises.slice(indexOfFirstExercise, indexOfLastExercise);
 
+    // callback function for Pagination component
     const paginate = (event, page) => {
         setCurrentPage(page);
 
@@ -59,10 +67,30 @@ const Exercises = (props) => {
         
     }, [props.bodyPart])
 
+    // Generate a random number
+    function randomIntFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // Generate random quby gifs in search results section
+    const qubyGifs = [quby1, quby2, quby3, quby4, quby5];
+
+    const qubyRandomDisplay = qubyGifs.map((qubyGif, index) => {
+
+        return (<img src={qubyGif} alt="quby-gif" key={index} className="quby-gif" 
+            style={{
+                top: randomIntFromRange(1602, 4574) + "px", 
+                left: randomIntFromRange(10, 90) + "%"
+            }} />
+        )
+    })
+    
     return (
         <Box id="exercises" mt="50px" p="20px"
             sx={{mt: {lg: "110px"}}}
         >
+            {qubyRandomDisplay}
+
             <Stack>
                 <Typography variant="h3" mb="20px" >
                     Search Results
@@ -85,6 +113,8 @@ const Exercises = (props) => {
                     <Pagination color="secondary" shape="circular" variant="outlined" size="large" count={Math.ceil(props.exercises.length / exercisesPerPage)} page={currentPage} showFirstButton showLastButton onChange={paginate} />
                 )}
             </Stack>
+
+            
         </Box>
     )
 }

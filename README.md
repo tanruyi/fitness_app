@@ -51,5 +51,7 @@ leg muscle by Maxicons from <a href="https://thenounproject.com/browse/icons/ter
 waist: https://thenounproject.com/icon/waist-4704563/
 waist by Flowicon from <a href="https://thenounproject.com/browse/icons/term/waist/" target="_blank" title="waist Icons">Noun Project</a>
 
+quby GIFs: https://getstickerpack.com/stickers/quby-pentol-gif
+
 # License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tanruyi/fitness_app/blob/main/LICENSE) file for details.

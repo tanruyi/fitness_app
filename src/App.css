@@ -126,6 +126,12 @@ body {
     text-decoration: none;
 }
 
+.quby-gif {
+    position: absolute;
+    height: 100px;
+    z-index: 2;
+}
+
 @media screen and (max-width:1200px) {
     .detail-image {
         width: 300px;

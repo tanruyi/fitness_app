@@ -14,6 +14,13 @@ import SimilarExercises from '../components/SimilarExercises';
 // IMPORT DATA
 import { exercisesDataFromAPI } from '../data/exercisesDataFromAPI';
 
+// IMPORT IMAGES
+import quby6 from '../assets/quby/sticker_14.gif';
+import quby7 from '../assets/quby/sticker_18.gif';
+import quby8 from '../assets/quby/sticker_21.gif';
+import quby9 from '../assets/quby/sticker_27.gif';
+import quby10 from '../assets/quby/sticker_30.gif';
+
 const ExerciseDetail = (props) => {
 
     // this is the exercise data for exercise selected
@@ -72,8 +79,27 @@ const ExerciseDetail = (props) => {
         fetchExercisesData();
     }, [id])
 
+    // Generate a random number
+    function randomIntFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // Generate random quby gifs in search results section
+    const qubyGifs = [quby6, quby7, quby8, quby9, quby10];
+
+    const qubyRandomDisplay = qubyGifs.map((qubyGif, index) => {
+
+        return (<img src={qubyGif} alt="quby-gif" key={index} className="quby-gif" 
+            style={{
+                top: randomIntFromRange(150, 2000) + "px", 
+                left: randomIntFromRange(10, 90) + "%"
+            }} />
+        )
+    })    
+
     return (
         <Box>
+            {qubyRandomDisplay}
             <Detail exerciseDetail={exerciseDetail} addFavouriteExercise={props.addFavouriteExercise} removeFavouriteExercise={props.removeFavouriteExercise} />
             <ExerciseVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
             <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />
