@@ -32,10 +32,10 @@ const SearchExercises = (props) => {
         }
 
         // TODO: uncomment below section when development is complete, and ensure that everything is running
-        // fetchExercisesData();
+        fetchExercisesData();
 
         // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
-        setBodyParts(bodyPartsDataFromAPI);
+        // setBodyParts(bodyPartsDataFromAPI);
     
     }, [])
 
@@ -66,14 +66,14 @@ const SearchExercises = (props) => {
     }
 
     // This is the event handler for when user clicks on search button below
-    const handleSearch = () => {
+    const handleSearch = async () => {
 
         if (search) {
             // TODO: uncomment below section when development is complete, and ensure that everything is running
-            // const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+            const exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
 
             // TODO: comment out below section, it is a temporary code for development to replace calling function fetchData
-            const exercisesData = exercisesDataFromAPI;
+            // const exercisesData = exercisesDataFromAPI;
 
             // to filter out the exercises where name, target, equipment or body part includes the text user typed in search bar
             const searchedExercises = exercisesData.filter((exercise) => 

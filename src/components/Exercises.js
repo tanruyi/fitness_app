@@ -36,7 +36,9 @@ const Exercises = (props) => {
     const paginate = (event, page) => {
         setCurrentPage(page);
 
-        window.scrollTo({top: 1800, behavior: "smooth"});
+        // scroll browser to top of search results section upon change of page
+        document.getElementById("exercises").scrollIntoView();
+
     }
 
     // this will update the search results based on selected body part card, whenever bodyPart state is updated
@@ -47,15 +49,17 @@ const Exercises = (props) => {
 
             if (props.bodyPart === "all") {
                 // TODO: uncomment below section when development is complete, and ensure that everything is running
-                // exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
+                exercisesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises", exerciseOptions);
 
-                exercisesData = exercisesDataFromAPI;
+                // TODO: comment below placeholder code
+                // exercisesData = exercisesDataFromAPI;
 
             } else {
                 // TODO: uncomment below section when development is complete, and ensure that everything is running
-                // exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${props.bodyPart}`, exerciseOptions);
+                exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${props.bodyPart}`, exerciseOptions);
 
-                exercisesData = exercisesDataFromAPI.filter((exercise) => exercise.bodyPart.includes(props.bodyPart));
+                // TODO: comment below placeholder code
+                // exercisesData = exercisesDataFromAPI.filter((exercise) => exercise.bodyPart.includes(props.bodyPart));
             }
 
             // to update the exercises state in Home component based on exercises result filtered based on body part card clicked

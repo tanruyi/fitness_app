@@ -48,29 +48,29 @@ const ExerciseDetail = (props) => {
             const youtubeSearchUrl = `https://youtube.googleapis.com/youtube/v3`;
 
             // TODO: uncomment below section when development is complete, and ensure that everything is running
-            // const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions);
+            const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions);
 
             // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
-            const exerciseDetailData = exercisesDataFromAPI.find((exercise) => exercise.id === id);
+            // const exerciseDetailData = exercisesDataFromAPI.find((exercise) => exercise.id === id);
 
             setExerciseDetail(exerciseDetailData);
 
-            // const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?part=snippet&maxResults=3&order=relevance&q=${exerciseDetailData.name}&safeSearch=moderate&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
-            // setExerciseVideos(exerciseVideosData.items);
+            const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?part=snippet&maxResults=3&order=relevance&q=${exerciseDetailData.name}&safeSearch=moderate&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
+            setExerciseVideos(exerciseVideosData.items);
 
             // TODO: uncomment below section when development is complete, and ensure that everything is running
-            // const targetMuscleExerciseData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+            const targetMuscleExerciseData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
 
             // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
-            const targetMuscleExerciseData = exercisesDataFromAPI.filter((exercise) => exercise.target === exerciseDetailData.target);
+            // const targetMuscleExerciseData = exercisesDataFromAPI.filter((exercise) => exercise.target === exerciseDetailData.target);
 
             setTargetMuscleExercises(targetMuscleExerciseData);
 
             // TODO: uncomment below section when development is complete, and ensure that everything is running
-            // const equipmentExerciseData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+            const equipmentExerciseData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
 
             // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
-            const equipmentExerciseData = exercisesDataFromAPI.filter((exercise) => exercise.equipment === exerciseDetailData.equipment);
+            // const equipmentExerciseData = exercisesDataFromAPI.filter((exercise) => exercise.equipment === exerciseDetailData.equipment);
 
             setEquipmentExercises(equipmentExerciseData);
 
