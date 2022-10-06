@@ -56,10 +56,23 @@ const App = () => {
         });
     }
 
+    const removeFavouriteExercise = (favouriteExerciseToDelete) => {
+        setFavouriteExercises((prevState) => {
+            let newList = prevState.filter((exercise) => exercise.id !== favouriteExerciseToDelete.id);
+
+            // result is undefined where all favorite exercises are removed, undefined is not a valid JSON text and will throw error, to change to []
+            if (newList === undefined) {
+                newList = [];
+            } 
+
+            return newList;
+        })
+    }
+
     // to retrieve the array of favourite exercises saved in local storage to key favouriteExercises & convert to JSON object
     useEffect(() => {
-        
-        const favouriteExercisesFromLocalStorage = JSON.parse(localStorage.getItem("favouriteExercises"));
+
+            const favouriteExercisesFromLocalStorage = JSON.parse(localStorage.getItem("favouriteExercises"));
 
         // only update state if array is not empty
         if (favouriteExercisesFromLocalStorage) {
@@ -71,7 +84,7 @@ const App = () => {
     // to save the array of favourite exercises in local storage across browser sessions as JSON text to key favouriteExercises
     useEffect(() => {
 
-      localStorage.setItem("favouriteExercises", JSON.stringify(favouriteExercises));
+        localStorage.setItem("favouriteExercises", JSON.stringify(favouriteExercises));
     
     }, [favouriteExercises]);
     
@@ -82,7 +95,7 @@ const App = () => {
                 <Navbar />
                 <Routes>
                     <Route path='/' element={<Home favouriteExercises={favouriteExercises} />} />
-                    <Route path='/exercise/:id' element={<ExerciseDetail addFavouriteExercise={addFavouriteExercise} />} />
+                    <Route path='/exercise/:id' element={<ExerciseDetail addFavouriteExercise={addFavouriteExercise} removeFavouriteExercise={removeFavouriteExercise} />} />
                     <Route path='/favourites' element={<Favourites favouriteExercises={favouriteExercises} />} />
                 </Routes>
                 <Footer />

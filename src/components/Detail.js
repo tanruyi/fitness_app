@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography, Stack, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // IMPORT IMAGES
 import BodyPartImage from '../assets/icons/body-part.png';
@@ -34,13 +35,19 @@ const Detail = (props) => {
         },
     ]
 
-    const handleClick = () => {
+    // to lift data to App component
+    const handleAddClick = () => {
         
         props.addFavouriteExercise(props.exerciseDetail);
     }
+    
+    // to lift data to App component
+    const handleDeleteClick = () => {
+        props.removeFavouriteExercise(props.exerciseDetail);
+    }
 
     return (
-        <Stack gap="60px"
+        <Stack gap="60px" mt="50px"
             sx={{
             flexDirection: {lg: "row"},
             p: "20px",
@@ -83,9 +90,14 @@ const Detail = (props) => {
                     </Stack>
                 ))}
 
-                <Button variant="contained" endIcon={<StarIcon />} onClick={handleClick}>
+                <Button variant="contained" endIcon={<StarIcon />} onClick={handleAddClick} color="secondary">
                     Add to favourites
                 </Button>
+
+                <Button variant="contained" startIcon={<DeleteIcon />} onClick={handleDeleteClick} color="info">
+                    Remove from favourites
+                </Button>
+
             </Stack>
         </Stack>
     )

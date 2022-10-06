@@ -74,7 +74,7 @@ const ExerciseDetail = (props) => {
 
     return (
         <Box>
-            <Detail exerciseDetail={exerciseDetail} addFavouriteExercise={props.addFavouriteExercise} />
+            <Detail exerciseDetail={exerciseDetail} addFavouriteExercise={props.addFavouriteExercise} removeFavouriteExercise={props.removeFavouriteExercise} />
             <ExerciseVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
             <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />
         </Box>

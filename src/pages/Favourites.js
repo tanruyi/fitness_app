@@ -19,7 +19,7 @@ const Favourites = (props) => {
             </Typography>
 
             <Stack direction="row" flexWrap="wrap" justifyContent="center" margin="15px" sx={{gap: {xs: "50px", lg: "110px"}}}>
-                {favouriteExercises.map((exercise, index) => (
+                {favouriteExercises?.map((exercise, index) => (
                     <ExerciseCard key={index} exercise={exercise} />
                 ))}
             </Stack>
