@@ -88,6 +88,9 @@ const SearchExercises = (props) => {
 
             // to update the exercises state in Home component to filtered exercises
             props.setExercises(searchedExercises);
+
+            // scroll browser to exercise section
+            document.getElementById("exercises").scrollIntoView();
         }  
     }
 

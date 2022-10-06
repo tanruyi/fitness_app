@@ -25,6 +25,7 @@ Styling was completed using CSS stylesheets and Material UI.
 This project was created as part of the course requirements for General Assembly's Software Engineering Immersive bootcamp.
 
 Potential new features to be added in the future:
+- Add a filter feature for users to filter for exercises based on target muscle and equipment
 - Saving past exercise records for each exercise, including details such as date of exercise, number of sets, number of reps, and weight used etc.
 - Creating a new event in Google calendar with the click of a button, with details of the workout auto-populated in the description section
 - Make it media responsive to mobile phones

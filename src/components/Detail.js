@@ -14,8 +14,6 @@ const Detail = (props) => {
 
     const theme = useTheme();
 
-    // const [newFavouriteExercise, setNewFavouriteExercise] = useState({});
-
     // destructured assignment to save the key-value pairs in exerciseDetail as variables
     const { bodyPart, gifUrl, name, target, equipment } = props.exerciseDetail;
 
