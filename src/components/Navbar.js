@@ -23,16 +23,16 @@ const Navbar = () => {
             <img src={Logo2} alt="logo" style={{width: "150px", margin: "0 20px", borderRadius: "10px"}} />
         </Link>
 
-        <Stack direction="row" gap="40px" fontSize="24px" alignItems="flex-end">
-            <Link to="/" style={{textDecoration: "none", color: theme.palette.primary.contrastText, borderBottom: "3px solid", borderBottomColor: theme.palette.primary.main}}>
+        <Stack direction="row" gap="40px" fontSize="24px" alignItems="center" justifyContent="flex-end" bgcolor={theme.palette.primary.light} borderRadius="5px" width="80%">
+            <Link to="/" className="navbar-button" style={{textDecoration: "none", color: theme.palette.primary.contrastText, fontWeight: "bold"}}>
                 Home
             </Link>
 
-            <a href="#exercises" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>
+            <a href="#exercises" className="navbar-button" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>
                 Exercises
             </a>
 
-            <Link to="/favourites" style={{textDecoration: "none", color: theme.palette.primary.contrastText}}>
+            <Link to="/favourites" className="navbar-button" style={{textDecoration: "none", color: theme.palette.primary.contrastText, marginRight: "20px"}}>
                 Favourites
             </Link>
         </Stack>

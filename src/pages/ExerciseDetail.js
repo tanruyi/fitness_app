@@ -48,8 +48,8 @@ const ExerciseDetail = (props) => {
 
             setExerciseDetail(exerciseDetailData);
 
-            const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?part=snippet&maxResults=3&order=relevance&q=${exerciseDetailData.name}&safeSearch=moderate&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
-            setExerciseVideos(exerciseVideosData.items);
+            // const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?part=snippet&maxResults=3&order=relevance&q=${exerciseDetailData.name}&safeSearch=moderate&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
+            // setExerciseVideos(exerciseVideosData.items);
 
             // TODO: uncomment below section when development is complete, and ensure that everything is running
             // const targetMuscleExerciseData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);

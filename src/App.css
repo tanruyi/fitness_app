@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    font-family: 'Josefin Sans';
+    font-family: "Helvetica";
     background-color: var(--gray);
 }
 
@@ -21,6 +21,10 @@ body {
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+.navbar-button:hover {
+    border-bottom: 3px solid white;
 }
 
 .right-arrow,

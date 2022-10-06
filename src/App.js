@@ -34,7 +34,7 @@ const theme = createTheme({
             dark: "#FEC10B",
             contrastText: "#000",
         },
-    }
+    },
 })
 
 const App = () => {
