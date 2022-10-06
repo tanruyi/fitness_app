@@ -1,5 +1,5 @@
 // IMPORT FROM LIBRARIES
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import {Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -41,9 +41,8 @@ const App = () => {
 
     const [favouriteExercises, setFavouriteExercises] = useState([]);
 
+    // function to check new favourite exercise before it is added to array in state
     const addFavouriteExercise = (newFavouriteExercise) => {
-
-        console.log("star clicked");
         
         setFavouriteExercises((prevState) => {
             
@@ -56,6 +55,26 @@ const App = () => {
             
         });
     }
+
+    // to retrieve the array of favourite exercises saved in local storage to key favouriteExercises & convert to JSON object
+    useEffect(() => {
+        
+        const favouriteExercisesFromLocalStorage = JSON.parse(localStorage.getItem("favouriteExercises"));
+
+        // only update state if array is not empty
+        if (favouriteExercisesFromLocalStorage) {
+            setFavouriteExercises(favouriteExercisesFromLocalStorage);
+        }
+
+    }, [])
+
+    // to save the array of favourite exercises in local storage across browser sessions as JSON text to key favouriteExercises
+    useEffect(() => {
+
+      localStorage.setItem("favouriteExercises", JSON.stringify(favouriteExercises));
+    
+    }, [favouriteExercises]);
+    
 
     return (
         <ThemeProvider theme={theme}>
