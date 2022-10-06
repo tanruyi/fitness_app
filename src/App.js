@@ -41,7 +41,7 @@ const App = () => {
 
     const [favouriteExercises, setFavouriteExercises] = useState([]);
 
-    // function to check new favourite exercise before it is added to array in state
+    // LIFT STATE: function to check new favourite exercise before it is added to array in state, based on exercise lifted up from Detail component
     const addFavouriteExercise = (newFavouriteExercise) => {
         
         setFavouriteExercises((prevState) => {
@@ -56,6 +56,7 @@ const App = () => {
         });
     }
 
+    // LIFT STATE: function to remove selected favourite exercise from array, based on exercise lifted up from Detail component
     const removeFavouriteExercise = (favouriteExerciseToDelete) => {
         setFavouriteExercises((prevState) => {
             let newList = prevState.filter((exercise) => exercise.id !== favouriteExerciseToDelete.id);

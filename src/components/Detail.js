@@ -40,7 +40,7 @@ const Detail = (props) => {
         
         props.addFavouriteExercise(props.exerciseDetail);
     }
-    
+
     // to lift data to App component
     const handleDeleteClick = () => {
         props.removeFavouriteExercise(props.exerciseDetail);
@@ -73,7 +73,7 @@ const Detail = (props) => {
                     <Stack key={item.name} direction="row" gap="24px" alignItems="center">
                         <Button 
                             sx={{
-                            backgroundColor: theme.palette.secondary.light,
+                            backgroundColor: "#FFF3F4",
                             borderRadius: "50%",
                             width: "100px",
                             height: "100px",

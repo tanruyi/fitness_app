@@ -79,7 +79,7 @@ const Exercises = (props) => {
 
         return (<img src={qubyGif} alt="quby-gif" key={index} className="quby-gif" 
             style={{
-                top: randomIntFromRange(1602, 4574) + "px", 
+                top: randomIntFromRange(1602, 3500) + "px", 
                 left: randomIntFromRange(10, 90) + "%"
             }} />
         )
