@@ -30,6 +30,9 @@ Potential new features to be added in the future:
 - Creating a new event in Google calendar with the click of a button, with details of the workout auto-populated in the description section
 - Make it media responsive to mobile phones
 
+# Hierarchy Chart for React Components
+![hierarchy chart](/src/assets/wireframes/Project%202%20Hierarchy.drawio.png)
+
 # Wireframe
 Home page:
 ![Home page](/src/assets/wireframes/Home.jpeg)
