@@ -26,16 +26,13 @@ const SearchExercises = (props) => {
     // To fetch list of body parts from exercises API only on component mount
     useEffect(() => {
         const fetchExercisesData = async () => {
-            const bodyPartsData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/bodyPartList", exerciseOptions);
+
+            const bodyPartsData = await bodyPartsDataFromAPI;
 
             setBodyParts(["all", ...bodyPartsData])
         }
 
-        // TODO: uncomment below section when development is complete, and ensure that everything is running
         fetchExercisesData();
-
-        // TODO: comment out below section, it is a temporary code for development to replace calling function fetchExercisesData
-        // setBodyParts(bodyPartsDataFromAPI);
     
     }, [])
 
