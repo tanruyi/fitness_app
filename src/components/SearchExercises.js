@@ -1,6 +1,6 @@
 // IMPORT FROM LIBRARIES
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Stack, TextField, Typography} from '@mui/material';
+import {Box, Button, Stack, TextField, Typography, Select, ListSubheader, MenuItem} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 // IMPORT CUSTOM HOOKS 
@@ -23,12 +23,38 @@ const SearchExercises = (props) => {
     // This is the array of body parts available in the exercise API
     const [bodyParts, setBodyParts] = useState([]);
 
+    //TODO: Build filter list
+    // This is the array of target muscles available in the exercise API
+    // const [targetMuscles, setTargetMuscles] = useState([]);
+
+    // This is the array of equipment available in the exercise API
+    // const [equipmentList, setEquipmentList] = useState([]);
+
+    // this is the target muscle selected by user
+    // const [selectedTargetMuscle, setSelectedTargetMuscle] = useState("");
+
+    // this is the equipment selected by user
+    // const [selectedEquipment, setSelectedEquipment] = useState("");
+
     // To fetch list of body parts from exercises API only on component mount
     useEffect(() => {
         const fetchExercisesData = async () => {
+
+            // retrieve list of body parts from API
             const bodyPartsData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/bodyPartList", exerciseOptions);
 
-            setBodyParts(["all", ...bodyPartsData])
+            setBodyParts(["all", ...bodyPartsData]);
+
+            //TODO: Build filter list
+            // retrieve list of target muscles from API
+            // const targetMusclesData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/targetList", exerciseOptions);
+
+            // setTargetMuscles(targetMusclesData);
+
+            // retrieve list of target muscles from API
+            // const equipmentListData = await fetchData("https://exercisedb.p.rapidapi.com/exercises/equipmentList", exerciseOptions);
+            
+            // setEquipmentList(equipmentListData);
         }
 
         // TODO: uncomment below section when development is complete, and ensure that everything is running
@@ -133,6 +159,35 @@ const SearchExercises = (props) => {
                 p: "20px",
             }}
         >
+            {/* TODO: Build filter list */}
+            {/* <Typography fontWeight="700" textAlign="center" mb="50px"
+                sx={{
+                    fontSize: {sx: "30px", lg: "44px"}
+                }}
+            >
+                Filter Exercises By Target Muscle or Equipment
+            </Typography>
+
+            <Select sx={{
+                width: "200px",
+            }}>
+                <ListSubheader>
+                    Target Muscles
+                </ListSubheader>
+
+                {targetMuscles.map((muscle) => (
+                    <MenuItem key={selectedTargetMuscle} value={muscle}>{muscle}</MenuItem>
+                ))}
+
+                <ListSubheader>
+                    Equipment
+                </ListSubheader>
+
+                {equipmentList.map((equipment) => (
+                    <MenuItem key={selectedEquipment} value={equipment}>{equipment}</MenuItem>
+                ))}
+            </Select> */}
+
             <Typography fontWeight="700" textAlign="center" mb="50px"
                 sx={{
                     fontSize: {sx: "30px", lg: "44px"}
